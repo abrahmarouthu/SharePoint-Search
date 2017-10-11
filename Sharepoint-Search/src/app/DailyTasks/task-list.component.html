@@ -1,0 +1,57 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+                <input type='text' [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                <h3>Filtered by: {{listFilter}} </h3>
+            </div>
+        </div>
+        <div class='table-responsive'>
+            <table class='table'
+                    *ngIf='tasks && tasks.length'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>FarmID</th>
+                        <th>TaskID</th>
+                        <th>SCSFarmLabel</th>
+                        <th>State</th>
+                        <th>ProgressValue</th>
+                        <th>StartedAt</th>
+                        <th>CompletedAt</th>
+                        <th>ExecutionTimeInHours</th>
+                        <th>ResultMessage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let task of filteredtasks'>
+                        <td><a [routerLink]="['/tasks', task.ID]">
+                                {{ task.ID }}
+                            </a>
+                        </td>
+                        <td>{{ task.FarmID }}</td>
+                        <td>{{ task.TaskId }}</td>
+                        <td>{{ task.SCSFarmLabel }}</td>
+                        <td>{{ task.State }}</td>
+                        <td>{{ task.ProgressValue }}</td>
+                        <td>{{ task.StartedAt }}</td>
+                        <td>{{ task.CompletedAt }}</td>
+                        <td>{{ task.ExecutionTimeInHours }}</td>
+                        <td>{{ task.ResultMessage }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>
