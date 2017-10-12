@@ -9,18 +9,18 @@ import 'rxjs/add/operator/map';
 import { IFarms } from './farms';
 
 @Injectable()
-export class TaskService {
+export class FarmService {
     private _farmUrl = 'http://localhost:2519/api/farms';
     constructor(private _http: HttpClient) { }
 
-    getTasks(): Observable<IFarms[]> {
+    getFarms(): Observable<IFarms[]> {
         return this._http.get<IFarms[]>(this._farmUrl)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getTask(FarmLabel: string): Observable<IFarms> {
-        return this.getTasks()
+    getFarm(FarmLabel: string): Observable<IFarms> {
+        return this.getFarms()
             .map((farms: IFarms[]) => farms.find(t => t.FarmLabel === FarmLabel));
     }
 

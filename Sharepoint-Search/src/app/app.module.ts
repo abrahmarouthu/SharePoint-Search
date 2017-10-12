@@ -6,17 +6,13 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { TaskModule } from './DailyTasks/dailytask.module';
-import { FarmStatusComponent } from './app/farm-status.component';
-import { FarmDetails } from './farm-details.component.component';
-import { FarmDetailsComponent } from './app/farm-status/farm-details.component';
+import { FarmModule } from './FarmStatus/farms.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
-    FarmStatusComponent,
-    FarmDetails.ComponentComponent,
-    FarmDetailsComponent
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +25,8 @@ import { FarmDetailsComponent } from './app/farm-status/farm-details.component';
       { path: '', redirectTo: 'welcome', pathMatch: 'full'},
       { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
-    TaskModule
+    TaskModule,
+    FarmModule
   ],
   providers: [],
   bootstrap: [AppComponent]

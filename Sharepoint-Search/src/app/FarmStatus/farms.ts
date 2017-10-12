@@ -5,7 +5,7 @@ export interface IFarms {
     Network: number;
     FarmLabel: string;
     FarmType: string;
-    FarmID: number;
+    FarmId: number;
     Role: string;
     Machine: string;
     Workload: string;

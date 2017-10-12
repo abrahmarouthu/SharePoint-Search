@@ -1,0 +1,51 @@
+<div class='panel panel-primary'>
+  <div class='panel-heading'>
+      {{pageTitle}}
+  </div>
+  <div class='panel-body'>
+      <div class='row'>
+          <div class='col-md-2'>Filter by:</div>
+          <div class='col-md-4'>
+              <input type='text' [(ngModel)]='listFilter' />
+          </div>
+      </div>
+      <div class='row'>
+          <div class='col-md-6'>
+              <h3>Filtered by: {{listFilter}} </h3>
+          </div>
+      </div>
+      <div class='table-responsive'>
+          <table class='table'
+                  *ngIf='farms && farms.length'>
+              <thead>
+                  <tr>
+                      <th>FarmLabel</th>
+                      <th>Environment</th>
+                      <td>GatherTime</td>
+                      <th>FarmId</th>
+                      <th>Workload</th>
+                      <th>FarmType</th>
+                      <th>CounterValueMax</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor='let farm of filteredfarms'>
+                      <td><a [routerLink]="['/farms', farm.FarmLabel]">
+                              {{ farm.FarmLabel }}
+                          </a>
+                      </td>
+                      <td>{{ farm.Environment }}</td>
+                      <td>{{ farm.GatherTime }}</td>
+                      <td>{{ farm.FarmId }}</td>
+                      <td>{{ farm.Workload }}</td>
+                      <td>{{ farm.FarmType }}</td>
+                      <td>{{ farm.CounterValueMax }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>
